@@ -11,9 +11,10 @@ import java.io.ObjectStreamException;
 import java.util.Random;
 
 public class gameJframe extends JFrame implements KeyListener, ActionListener {
- String path = "image\\girl\\girl14\\";
+ String path = "image\\girl\\girl1\\";
 
  int stepp = 0;
+ int i ;
  int[][] win = new int[][]{
          {1,2,3,4},
          {5,6,7,8},
@@ -91,7 +92,7 @@ if(victory()){
    for (int j = 0; j < 4; j++) {
     //获取图片序号
     int num = data[i][j];
-    ImageIcon icon = new ImageIcon(path+num+".png");//创建图像对象
+    ImageIcon icon = new ImageIcon(path+num+".jpg");//创建图像对象
     JLabel jLabel = new JLabel(icon);//创建管理容器
     jLabel.setBounds(105*j+83,105*i+134,105,105);
     //this.add(jLabel1);
@@ -160,7 +161,7 @@ if(victory()){
 int code=e.getKeyCode();
 if (code==65){
  this.getContentPane().removeAll();
- JLabel allimage = new JLabel(new ImageIcon(path+"all.png"));
+ JLabel allimage = new JLabel(new ImageIcon(path+"all.jpg"));
  allimage.setBounds(83,134,420,420);
  this.getContentPane().add(allimage);
  //添加背景图片
@@ -264,28 +265,40 @@ initicon();
  if(obj == relogItem){
   System.out.println("重新登陆");
  }
- if(obj == aboutItem){
+ if(obj == aboutItem) {
   JDialog about = new JDialog();
   JLabel aboutjlabe = new JLabel(new ImageIcon("image\\about.png"));
-  aboutjlabe.setBounds(0,0,677,671);
+  aboutjlabe.setBounds(0, 0, 677, 671);
   about.getContentPane().add(aboutjlabe);
-  about.setSize(750,750);
+  about.setSize(750, 750);
   about.setAlwaysOnTop(true);
   about.setLocationRelativeTo(null);
   about.setModal(true);
   about.setVisible(true);
+ }
   if(obj == animal){
-   //path = "image\\animal\\animal1";
+   Random r = new Random();
+   int a = r.nextInt(8);
+   if(i==a){i++;}else{i=a;}
+   path = "image\\animal\\animal"+i+"\\";
    System.out.println(path);
    stepp = 0;
    initData();
    initicon();
   }
   if(obj == prettygril){
-   path = "image/girl";
+   Random r = new Random();
+   int a = r.nextInt(14);
+   if(i==a){i++;}else{i=a;}
+
+   path = "image\\girl\\girl"+i+"\\";
+   System.out.println(path);
+   stepp = 0;
+   initData();
+   initicon();
   }
  }
 
   }
- }
+
 
